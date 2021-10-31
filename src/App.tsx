@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@coreui/coreui/dist/css/coreui.min.css";
+import { CContainer } from "@coreui/react";
+import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import AppContext from "./contexts/AppContext";
+import Routes from "./routes";
+import Footer from "./components/Footer";
 
 function App() {
+  const [sidebarShow, setSidebarShow] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={{ sidebarShow, setSidebarShow }}>
+      <BrowserRouter>
+        <Header />
+
+        <div className="wrapper d-flex flex-row min-vh-100 bg-light">
+          <Sidebar />
+
+          <CContainer lg>
+            <Routes />
+          </CContainer>
+        </div>
+
+        <Footer />
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 }
 
