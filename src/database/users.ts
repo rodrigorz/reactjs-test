@@ -7,7 +7,7 @@ export interface User {
   phone?: string;
   mobile: string;
   password: string;
-  expire: boolean;
+  expire: number;
   expire_date?: string;
   status: string;
   profile?: string;
@@ -23,7 +23,7 @@ const UsersData: User[] = [
     email: 'leticia.lopes@email.com',
     mobile: '11933224456',
     password: '123456',
-    expire: false,
+    expire: 0,
     profile: 'Office Support',
     status: 'active',
   },
@@ -35,7 +35,7 @@ const UsersData: User[] = [
     email: 'maycon.cruz@email.com',
     mobile: '11924356897',
     password: '123456',
-    expire: false,
+    expire: 0,
     profile: 'Business Contact',
     status: 'active',
   },
@@ -47,7 +47,7 @@ const UsersData: User[] = [
     email: 'tiago.tapparo@email.com',
     mobile: '11943556778',
     password: '123456',
-    expire: false,
+    expire: 1,
     profile: 'Driver',
     status: 'inactive',
   },

@@ -17,7 +17,7 @@ async function getUsers(status?: string): Promise<User[]> {
   return users;
 }
 
-async function showUser(id: number): Promise<User | undefined> {
+async function showUser(id: string | number): Promise<User | undefined> {
   const data = localStorage.getItem('users');
   if (!data) {
     return;
@@ -25,12 +25,12 @@ async function showUser(id: number): Promise<User | undefined> {
 
   const users = JSON.parse(data) as User[];
 
-  const user = users.find(user => user.id === id);
+  const user = users.find(user => user.id === Number(id));
 
   return user;
 }
 
-async function deleteUser(id: number): Promise<boolean> {
+async function deleteUser(id: string | number): Promise<boolean> {
   const data = localStorage.getItem('users');
   if (!data) {
     return false;
@@ -38,7 +38,7 @@ async function deleteUser(id: number): Promise<boolean> {
   const users = JSON.parse(data) as User[];
 
   users.forEach(user => {
-    if (user.id === id) {
+    if (user.id === Number(id)) {
       user.status = 'inactive';
     }
   });
@@ -48,7 +48,7 @@ async function deleteUser(id: number): Promise<boolean> {
   return true;
 }
 
-async function restoreUser(id: number): Promise<boolean> {
+async function restoreUser(id: string | number): Promise<boolean> {
   const data = localStorage.getItem('users');
   if (!data) {
     return false;
@@ -56,7 +56,7 @@ async function restoreUser(id: number): Promise<boolean> {
   const users = JSON.parse(data) as User[];
 
   users.forEach(user => {
-    if (user.id === id) {
+    if (user.id === Number(id)) {
       user.status = 'active';
     }
   });

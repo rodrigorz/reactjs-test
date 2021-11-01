@@ -3,6 +3,7 @@ import CIcon from '@coreui/icons-react';
 import { CNavItem, CSidebar, CSidebarNav } from '@coreui/react';
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 import AppContext from '../../contexts/AppContext';
 
 const Sidebar: React.FC = () => {
@@ -12,7 +13,7 @@ const Sidebar: React.FC = () => {
   return (
     <CSidebar position="sticky" visible={sidebarShow} className="bg-primary">
       <CSidebarNav>
-        <CNavItem href="/" active={location.pathname === '/'}>
+        <CNavItem component={Link} to="/" active={location.pathname === '/'}>
           <CIcon icon={cilPeople} customClassName="nav-icon" />
           Users
         </CNavItem>

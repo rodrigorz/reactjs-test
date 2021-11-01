@@ -20,6 +20,7 @@ import CIcon from "@coreui/icons-react";
 import { cilPlus, cilFilter, cilPencil, cilMinus } from "@coreui/icons";
 import { User } from "../../database/users";
 import api from "../../services/api";
+import { Link } from "react-router-dom";
 
 const ListUsers: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -107,9 +108,11 @@ const ListUsers: React.FC = () => {
                       <CTableDataCell>{user.profile}</CTableDataCell>
                       <CTableDataCell>{user.status}</CTableDataCell>
                       <CTableDataCell>
-                        <CButton size="sm" variant="ghost">
-                          <CIcon icon={cilPencil} size="sm" />
-                        </CButton>
+                        <Link to={`/${user.id}`}>
+                          <CButton size="sm" variant="ghost">
+                            <CIcon icon={cilPencil} size="sm" />
+                          </CButton>
+                        </Link>
                         {user.status === 'active' ? (
                           <CButton size="sm" color="danger" variant="ghost" className="ms-1" onClick={() => deleteUser(user.id)}>
                             <CIcon icon={cilMinus} size="sm" />
