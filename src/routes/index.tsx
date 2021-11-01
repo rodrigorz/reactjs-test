@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import HomePage from "../pages/HomePage";
+import ListUsers from "../pages/ListUsers";
 
 const Routes: React.FC = () => {
   return (
     <Switch>
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={ListUsers} />
     </Switch>
   );
 };

@@ -1,6 +1,11 @@
 import { createContext } from 'react';
 
-const AppContext = createContext({
+interface IAppContext {
+  sidebarShow: boolean;
+  setSidebarShow(value: boolean): void;
+}
+
+const AppContext = createContext<IAppContext>({
   sidebarShow: true,
   setSidebarShow(value: boolean): void {},
 });
